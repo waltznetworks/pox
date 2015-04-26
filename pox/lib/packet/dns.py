@@ -241,6 +241,9 @@ class dns(packet_base):
           elif r.qtype == 1:
             assert isinstance(r.rddata, IPAddr)
             return s + r.rddata.toRaw()
+          elif r.qtype == 28:
+            assert isinstance(r.rddata, IPAddr6)
+            return s + r.rddata.toRaw()
           else:
             return s + r.rddata
 
@@ -429,7 +432,7 @@ class dns(packet_base):
         elif type == 28:
             if dlen != 16:
                 raise Exception('(dns) invalid a data size',system='packet')
-            return IPAddr6(l[beg_index : beg_index + dlen])
+            return IPAddr6.from_raw(l[beg_index : beg_index + dlen])
         # NS
         elif type == 2:
             return self.read_dns_name_from_index(l, beg_index)[1]

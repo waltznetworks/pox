@@ -512,6 +512,9 @@ class IPAddr6 (object):
       raise RuntimeError("Netmask %s is not CIDR-compatible" % (dq,))
     return c
 
+  def toRaw(self):
+    return self.raw
+
   @staticmethod
   def cidr_to_netmask (bits):
     """
