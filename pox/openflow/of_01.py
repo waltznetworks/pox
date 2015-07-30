@@ -30,8 +30,7 @@ import pox.openflow.debug
 from pox.openflow.util import make_type_to_unpacker_table
 from pox.openflow import *
 
-#log = core.getLogger()
-log = None
+log = core.getLogger()
 
 import socket
 import select
