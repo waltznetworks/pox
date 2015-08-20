@@ -6,4 +6,6 @@ RUN sudo apt-get update && sudo apt-get install -y python2.7-minimal python-dev 
 
 ADD . /app
 
+EXPOSE 6633
+
 ENTRYPOINT ["python", "/app/pox.py"]
